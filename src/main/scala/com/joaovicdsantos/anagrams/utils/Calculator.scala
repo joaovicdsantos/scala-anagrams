@@ -19,11 +19,11 @@ object Calculator {
    * @param n number for calculate
    * @return result
    */
-  def fatorial(n: Int): Int = {
+  def factorial(n: Int): Int = {
     if (n <= 1)
       1
     else
-      n*fatorial(n-1)
+      n*factorial(n-1)
   }
 
   /** Count the repetitions of letters
@@ -59,10 +59,10 @@ object Calculator {
    * @return number of anagrams
    */
   def anagrams(word: Word): Int = {
-    var result: Int = fatorial(word.content.length)
+    var result: Int = factorial(word.content.length)
     val wordRepetitions: Map[Char, Int] = repetitions(word)
 
-    wordRepetitions foreach { case (k, v) => result /= fatorial(v) }
+    wordRepetitions foreach { case (k, v) => result /= factorial(v) }
 
     result
   }
