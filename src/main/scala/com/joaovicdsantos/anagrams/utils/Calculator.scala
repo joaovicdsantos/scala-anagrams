@@ -1,5 +1,8 @@
 package com.joaovicdsantos.anagrams.utils
 
+import scala.collection.mutable.LinkedHashSet
+import scala.collection.mutable.Set
+
 import com.joaovicdsantos.anagrams.classes.Word
 
 
@@ -62,6 +65,25 @@ object Calculator {
     wordRepetitions foreach { case (k, v) => result /= fatorial(v) }
 
     result
+  }
+
+  /** Show All Anagrams
+   *
+   * Assemble all possible combinations.
+   *
+   * @param wordContent word for anagrams to be found
+   * @return list with all anagrams
+   */
+  def showAnagrams(wordContent: String): Set[String] = {
+    if (wordContent.length == 0) {
+      Set(wordContent)
+    } else {
+      var anagrams: Set[String] = new LinkedHashSet[String]()
+      for (w <- showAnagrams(wordContent.toCharArray.slice(1, wordContent.length).mkString))
+        for (pos <- 0 to w.length)
+          anagrams += s"${w.slice(0, pos).mkString}${wordContent(0)}${w.slice(pos, w.length).mkString}"
+      anagrams
+    }  
   }
 
 }

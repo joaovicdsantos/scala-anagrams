@@ -16,7 +16,7 @@ class Word(val content: String, val splited: List[Char], val length: Int) {
    *
    * @constructor
    */
-  def this(content: String) = this(content, content.map(_.toChar).toList, content.length)
+  def this(content: String) = this(content, content.toCharArray.toList, content.length)
 
   /** Instance example object
    *
@@ -35,5 +35,11 @@ class Word(val content: String, val splited: List[Char], val length: Int) {
    * @return repetitions map
    */
   def repetitions = Calculator.repetitions(this)
+
+  /** Show Anagrams
+   *
+   * @return list with all anagrams
+   */
+  def showAnagrams = Calculator.showAnagrams(this.content)
 
 }
